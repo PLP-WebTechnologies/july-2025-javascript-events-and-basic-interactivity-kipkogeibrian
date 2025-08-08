@@ -1,0 +1,468 @@
+
+                                       index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Interactive Web Page</h1>
+        <button id="themeToggle">🌙 Dark Mode</button>
+    </header>
+
+    <main>
+        <!-- Part 1: Event Handling -->
+        <section id="eventSection">
+            <h2>Event Handling</h2>
+            <div class="demo-box">
+                <button id="clickMeBtn">Click Me!</button>
+                <p id="clickMessage" class="hidden">Button was clicked!</p>
+                
+                <div id="hoverBox" class="hover-box">Hover over me</div>
+                
+                <input type="text" id="keyInput" placeholder="Type something...">
+                <p id="keyOutput"></p>
+            </div>
+        </section>
+
+        <!-- Part 2: Interactive Elements -->
+        <section id="interactiveElements">
+            <h2>Interactive Elements</h2>
+            
+            <div class="demo-box">
+                <h3>Counter Game</h3>
+                <div class="counter-display">0</div>
+                <button id="incrementBtn">+</button>
+                <button id="decrementBtn">-</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+            
+            <div class="demo-box">
+                <h3>FAQ Section</h3>
+                <div class="faq-item">
+                    <button class="faq-question">What is JavaScript? <span>+</span></button>
+                    <div class="faq-answer hidden">
+                        <p>JavaScript is a programming language that enables interactive web pages.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">What are events? <span>+</span></button>
+                    <div class="faq-answer hidden">
+                        <p>Events are actions that happen in the browser, like clicks or key presses.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 3: Form Validation -->
+        <section id="formSection">
+            <h2>Form Validation</h2>
+            <form id="userForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" required>
+                    <span class="error-message hidden">Please enter your name</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                    <span class="error-message hidden">Please enter a valid email</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required minlength="8">
+                    <span class="error-message hidden">Password must be at least 8 characters</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" min="18" max="120">
+                    <span class="error-message hidden">Must be between 18-120</span>
+                </div>
+                
+                <button type="submit">Submit</button>
+                <p id="formSuccess" class="hidden success-message">Form submitted successfully!</p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Interactive Web Page Assignment</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+                                  style.css
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #222;
+    color: #eee;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #3498db;
+    color: white;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.dark-mode header {
+    background-color: #2c3e50;
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.dark-mode section {
+    border-color: #444;
+}
+
+.demo-box {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.dark-mode .demo-box {
+    background-color: #333;
+}
+
+button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+.dark-mode button {
+    background-color: #16a085;
+}
+
+#themeToggle {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+/* Event Handling Section */
+.hover-box {
+    width: 200px;
+    height: 100px;
+    background-color: #e74c3c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    transition: all 0.3s;
+}
+
+.hover-box:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Interactive Elements */
+.counter-display {
+    font-size: 2rem;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background-color: #3498db;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question span {
+    font-size: 1.2rem;
+}
+
+.faq-answer {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 0 0 5px 5px;
+}
+
+.dark-mode .faq-answer {
+    background-color: #444;
+}
+
+/* Form Validation */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.dark-mode input {
+    background-color: #444;
+    color: #eee;
+    border-color: #666;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+input.error {
+    border-color: #e74c3c;
+}
+
+.success-message {
+    color: #2ecc71;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+                     script.js
+/**************************************
+ * Part 1: Event Handling
+ * Responding to user interactions
+ **************************************/
+
+// DOM Elements
+const clickMeBtn = document.getElementById('clickMeBtn');
+const clickMessage = document.getElementById('clickMessage');
+const hoverBox = document.getElementById('hoverBox');
+const keyInput = document.getElementById('keyInput');
+const keyOutput = document.getElementById('keyOutput');
+
+// Click Event
+clickMeBtn.addEventListener('click', () => {
+    clickMessage.classList.toggle('hidden');
+});
+
+// Mouseover Event
+hoverBox.addEventListener('mouseenter', () => {
+    hoverBox.textContent = 'Mouse is over me!';
+});
+
+hoverBox.addEventListener('mouseleave', () => {
+    hoverBox.textContent = 'Hover over me';
+});
+
+// Keyboard Event
+keyInput.addEventListener('keyup', (event) => {
+    keyOutput.textContent = `You typed: ${event.target.value}`;
+});
+
+/**************************************
+ * Part 2: Interactive Elements
+ * Building dynamic components
+ **************************************/
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+});
+
+// Counter Game
+let count = 0;
+const counterDisplay = document.querySelector('.counter-display');
+const incrementBtn = document.getElementById('incrementBtn');
+const decrementBtn = document.getElementById('decrementBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+function updateCounter() {
+    counterDisplay.textContent = count;
+}
+
+incrementBtn.addEventListener('click', () => {
+    count++;
+    updateCounter();
+});
+
+decrementBtn.addEventListener('click', () => {
+    count--;
+    updateCounter();
+});
+
+resetBtn.addEventListener('click', () => {
+    count = 0;
+    updateCounter();
+});
+
+// FAQ Accordion
+const faqQuestions = document.querySelectorAll('.faq-question');
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const plusSign = question.querySelector('span');
+        
+        answer.classList.toggle('hidden');
+        plusSign.textContent = answer.classList.contains('hidden') ? '+' : '−';
+    });
+});
+
+/**************************************
+ * Part 3: Form Validation
+ * Client-side validation logic
+ **************************************/
+
+const userForm = document.getElementById('userForm');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const ageInput = document.getElementById('age');
+const formSuccess = document.getElementById('formSuccess');
+
+// Validate name field
+function validateName() {
+    const nameError = nameInput.nextElementSibling;
+    if (nameInput.value.trim() === '') {
+        nameInput.classList.add('error');
+        nameError.classList.add('show');
+        return false;
+    } else {
+        nameInput.classList.remove('error');
+        nameError.classList.remove('show');
+        return true;
+    }
+}
+
+// Validate email field
+function validateEmail() {
+    const emailError = emailInput.nextElementSibling;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!emailRegex.test(emailInput.value)) {
+        emailInput.classList.add('error');
+        emailError.classList.add('show');
+        return false;
+    } else {
+        emailInput.classList.remove('error');
+        emailError.classList.remove('show');
+        return true;
+    }
+}
+
+// Validate password field
+function validatePassword() {
+    const passwordError = passwordInput.nextElementSibling;
+    if (passwordInput.value.length < 8) {
+        passwordInput.classList.add('error');
+        passwordError.classList.add('show');
+        return false;
+    } else {
+        passwordInput.classList.remove('error');
+        passwordError.classList.remove('show');
+        return true;
+    }
+}
+
+// Validate age field
+function validateAge() {
+    const ageError = ageInput.nextElementSibling;
+    const age = parseInt(ageInput.value);
+    
+    if (ageInput.value && (age < 18 || age > 120)) {
+        ageInput.classList.add('error');
+        ageError.classList.add('show');
+        return false;
+    } else {
+        ageInput.classList.remove('error');
+        ageError.classList.remove('show');
+        return true;
+    }
+}
+
+// Real-time validation
+nameInput.addEventListener('input', validateName);
+emailInput.addEventListener('input', validateEmail);
+passwordInput.addEventListener('input', validatePassword);
+ageInput.addEventListener('input', validateAge);
+
+// Form submission
+userForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const isPasswordValid = validatePassword();
+    const isAgeValid = validateAge();
+    
+    if (isNameValid && isEmailValid && isPasswordValid && isAgeValid) {
+        formSuccess.classList.remove('hidden');
+        userForm.reset();
+        
+        // Hide success message after 3 seconds
+        setTimeout(() => {
+            formSuccess.classList.add('hidden');
+        }, 3000);
+    }
+});
+
